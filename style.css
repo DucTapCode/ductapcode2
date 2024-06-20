@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.inputfileimg::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.labelimg {
+    font-family: "Playfair Display", serif
+}
+
+.inputfileimg {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    display: flex;
+}
+
+
+.inputfileimg+label {
+    content: 'Chọn tệp';
+    display: inline-block;
+    background: linear-gradient(to bottom, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
+#img {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.inputfileimg+label:hover {
+    border-color: black;
+}
+
+.inputfileimg+label:active {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+#button1,
+#xem,
+#random {
+    border: 1px solid #999;
+    background: linear-gradient(to bottom, #f9f9f9, #e3e3e3);
+    border-radius: 3px;
+    padding: 5px 8px;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    font-family: "Playfair Display", serif;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+    font-size: 15px;
+}
