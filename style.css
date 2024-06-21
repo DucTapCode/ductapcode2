@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 body {
-    display: flex;
+    display: flex ;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -89,4 +89,15 @@ a {
     font-size: 10pt;
     font-family: "Playfair Display", serif;
     border: 1px solid #999; 
+}
+#footer{
+top:90%;
+position: absolute;
+}
+#footer button {
+    background-color: transparent;
+    border:none
+}
+#footer button a{
+    color:black;
 }
