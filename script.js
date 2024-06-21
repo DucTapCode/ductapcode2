@@ -35,7 +35,6 @@ async function pickRandomFile() {
         const items = result.items;
 
         if (items.length === 0) {
-            alert("Không có tệp nào trong thư mục này.");
             return;
         }
 
@@ -47,7 +46,7 @@ async function pickRandomFile() {
         const url = await randomFileRef.getDownloadURL();
         xem.style.display = "block";
         urlfile.href = url;
-        urlfile.innerHTML = randomFileRef.name;
+        urlfile.innerHTML = randomFileRef.name
     } catch (error) {
         console.error("Error picking random file:", error);
     }
@@ -91,7 +90,7 @@ btn.addEventListener("click", async (e) => {
                 const url = await storageRef.getDownloadURL();
                 xem.style.display = "block";
                 urlfile.href = url;
-                urlfile.innerHTML = filename;
+                urlfile.innerHTML = filename
             } catch (error) {
                 console.error("Error getting download URL:", error);
             }
