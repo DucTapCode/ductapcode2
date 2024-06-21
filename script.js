@@ -47,6 +47,7 @@ async function pickRandomFile() {
         const url = await randomFileRef.getDownloadURL();
         xem.style.display = "block";
         urlfile.href = url;
+        urlfile.innerHTML = randomFileRef.name;
     } catch (error) {
         console.error("Error picking random file:", error);
     }
@@ -90,6 +91,7 @@ btn.addEventListener("click", async (e) => {
                 const url = await storageRef.getDownloadURL();
                 xem.style.display = "block";
                 urlfile.href = url;
+                urlfile.innerHTML = filename;
             } catch (error) {
                 console.error("Error getting download URL:", error);
             }
