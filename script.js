@@ -18,10 +18,31 @@ const btn = document.getElementById("button1");
 const xem = document.getElementById("xem");
 const urlfile = document.getElementById("url");
 const chonloai = document.getElementById("chonloai");
+const fileInput = document.getElementById("file");
+const videoInput = document.getElementById("video");
+const otherInput = document.getElementById("other");
+
+chonloai.addEventListener("change", function() {
+    const option = chonloai.value;
+    fileInput.style.display = "none";
+    videoInput.style.display = "none";
+    otherInput.style.display = "none";
+
+    if (option == 1) {
+        fileInput.style.display = "block";
+        fileInput.accept = ".png, .jpg, .jpeg"; // Chỉ cho phép ảnh
+    } else if (option == 2) {
+        videoInput.style.display = "block";
+        videoInput.accept = ".mp4, .avi, .mkv"; // Chỉ cho phép video
+    } else {
+        otherInput.style.display = "block";
+        otherInput.accept = "*"; // Không giới hạn loại tệp
+    }
+});
 
 async function pickRandomFile() {
     try {
-        const option = chonloai.options[chonloai.selectedIndex].value;
+        const option = chonloai.value;
         let listRef = storage.ref();
         if (option == 1) {
             listRef = storage.ref().child("images/");
@@ -46,7 +67,7 @@ async function pickRandomFile() {
         const url = await randomFileRef.getDownloadURL();
         xem.style.display = "block";
         urlfile.href = url;
-        urlfile.innerHTML = randomFileRef.name
+        urlfile.innerHTML = randomFileRef.name;
     } catch (error) {
         console.error("Error picking random file:", error);
     }
@@ -56,15 +77,21 @@ document.getElementById("random").addEventListener("click", pickRandomFile);
 
 btn.addEventListener("click", async (e) => {
     const filename = prompt("Tên file");
-    const fileInput = document.getElementById("file");
-    const file = fileInput.files[0];
+    const option = chonloai.value;
+    let file;
+    if (option == 1) {
+        file = fileInput.files[0];
+    } else if (option == 2) {
+        file = videoInput.files[0];
+    } else {
+        file = otherInput.files[0];
+    }
 
     if (!file) {
         alert("Vui lòng chọn một tệp trước khi tải lên.");
         return;
     }
 
-    const option = chonloai.options[chonloai.selectedIndex].value;
     let storageRef = storage.ref();
     if (option == 1) {
         storageRef = storage.ref().child(`images/${filename}`);
@@ -90,7 +117,7 @@ btn.addEventListener("click", async (e) => {
                 const url = await storageRef.getDownloadURL();
                 xem.style.display = "block";
                 urlfile.href = url;
-                urlfile.innerHTML = filename
+                urlfile.innerHTML = filename;
             } catch (error) {
                 console.error("Error getting download URL:", error);
             }
