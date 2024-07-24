@@ -107,7 +107,11 @@ btn.addEventListener("click", async (e) => {
         "state_changed",
         function progress(snapshot) {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log(progress);
+            console.log(
+                `%c${filename}:%c${progress}%`,
+                'color: white; font-size: 16px;',
+                'color: blue; font-size: 16px;'
+              );
         },
         function error(err) {
             console.log("Đã xảy ra lỗi: " + err);
